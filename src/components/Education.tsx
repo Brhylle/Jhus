@@ -15,7 +15,7 @@ const educationData: EducationItem[] = [
         institution: 'Pamantasan ng Lungsod ng Pasig',
         location: 'Pasig City, Philippines',
         period: '2023 - Present',
-        description: 'Relevant Coursework: '
+        description: 'Relevant Coursework: Financial Accounting and Reporting, Auditing and Assurance, Management Accounting, Taxation, Fraud Examination, Computerized Information System'
     },
 ];
 
