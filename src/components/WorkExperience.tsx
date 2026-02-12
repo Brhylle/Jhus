@@ -11,40 +11,56 @@ interface WorkItem {
 
 const workData: WorkItem[] = [
     {
-        title: 'Senior Full Stack Developer',
-        company: 'Tech Company Inc.',
-        location: 'City, Country',
-        period: 'Jan 2022 - Present',
+        title: 'Financial Market Trader & Instructor',
+        company: 'Self-Employed',
+        location: 'Pasig, Philippines',
+        period: '2023 - 2026',
         achievements: [
-            'Led development of microservices architecture serving 1M+ users',
-            'Reduced API response time by 40% through optimization',
-            'Mentored team of 5 junior developers',
-            'Implemented CI/CD pipeline reducing deployment time by 60%'
+            'Taught a 2-month long mentorship program to educate 50+ students on trading the crypto and forex markets, achieving a 100% satisfaction rate with an average rating of 5 stars.',
+            'Invited as a guest speaker on two occasions to conduct structured learning sessions in two independent communities with 5,000+ and 1,000+ members, earning an average 5-star rating and 100% participant satisfaction based on post-session feedback.',
         ]
     },
     {
-        title: 'Full Stack Developer',
-        company: 'Startup XYZ',
-        location: 'City, Country',
-        period: 'Jun 2020 - Dec 2021',
+        title: 'Business Permit Ledger Officer - Senior Associate',
+        company: 'Department of Labor and Employment',
+        location: 'Pasig, Philippines',
+        period: 'January 2026',
         achievements: [
-            'Built responsive web applications using React and Node.js',
-            'Collaborated with design team to implement pixel-perfect UIs',
-            'Integrated third-party APIs and payment systems',
-            'Participated in agile development processes'
+            'Conducted initial analysis of financial statements and supporting documents to assist in business permit evaluation for 50+ applicants.',
+            'Conducted basic tax compliance assessments for SME applicants, identifying deficiencies, coordinating clarifications, and supporting timely permit processing.',
         ]
     },
     {
-        title: 'Software Engineering Intern',
-        company: 'Big Tech Corp',
-        location: 'City, Country',
-        period: 'Summer 2019',
+        title: 'Accounting Department Assistant',
+        company: 'Public Employment Service Office',
+        location: 'Pasig, Philippines',
+        period: '2024',
         achievements: [
-            'Developed internal tools using Python and Django',
-            'Automated testing processes saving 10+ hours per week',
-            'Contributed to open-source projects'
+            'Conducted house-to-house surveys to collect demographic and community data, ensuring accuracy and completeness during field interviews.',
+            'Assisted in organizing and validating collected responses for submission to the LGU, supporting data-driven community planning initiatives.',
         ]
-    }
+    },
+    {
+        title: 'Business Permit Ledger Officer - Junior Associate',
+        company: 'Department of Labor and Employment',
+        location: 'Pasig, Philippines',
+        period: 'July 2025',
+        achievements: [
+            'Conducted initial analysis of financial statements and supporting documents to assist in business permit evaluation for 50+ applicants.',
+            'Conducted basic tax compliance assessments for SME applicants, identifying deficiencies, coordinating clarifications, and supporting timely permit processing.',
+        ]
+    },
+    {
+        title: 'Community Survey Assistant',
+        company: 'Public Employment Service Office',
+        location: 'Pasig, Philippines',
+        period: '2024',
+        achievements: [
+            'Conducted house-to-house surveys to collect demographic and community data, ensuring accuracy and completeness during field interviews.',
+            'Assisted in organizing and validating collected responses for submission to the LGU, supporting data-driven community planning initiatives.',
+        ]
+    },
+    // add workData here...
 ];
 
 const containerVariants = {
