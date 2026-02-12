@@ -58,7 +58,7 @@ export default function Navbar() {
                     >
                         <ButterflyDecor size="sm" className="text-grey-900" animated={false} />
                         <span className="font-display font-bold text-xl text-grey-900 group-hover:text-grey-700 transition-colors">
-                            Portfolio
+                            J.C. Dela Cruz
                         </span>
                     </motion.button>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
                                         asChild
                                         className="ml-2 bg-grey-800 hover:bg-grey-900"
                                     >
-                                        <a href="https://docs.google.com/document/d/1Uhw-9Ar5TIwWmo9_NweqXcQptueHQCJRr6vNZF0eHDY/export?format=pdf" download>
+                                        <a href="https://docs.google.com/document/d/1Uhw-9Ar5TIwWmo9_NweqXcQptueHQCJRr6vNZF0eHDY/export?format=pdf">
                                             Download Resume
                                         </a>
                                     </Button>

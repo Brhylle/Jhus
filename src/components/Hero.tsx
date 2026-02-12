@@ -129,7 +129,7 @@ export default function Hero() {
                         variant="outline"
                         className="font-display border-grey-300 hover:bg-grey-100"
                     >
-                        <a href="https://docs.google.com/document/d/1Uhw-9Ar5TIwWmo9_NweqXcQptueHQCJRr6vNZF0eHDY/export?format=pdf" download className="flex items-center gap-2">
+                        <a href="https://docs.google.com/document/d/1Uhw-9Ar5TIwWmo9_NweqXcQptueHQCJRr6vNZF0eHDY/export?format=pdf" className="flex items-center gap-2">
                             <Download className="w-4 h-4" />
                             Download Resume
                         </a>
