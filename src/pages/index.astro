@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Education from '../components/Education';
 import WorkExperience from '../components/WorkExperience';
@@ -9,6 +10,7 @@ import Contact from '../components/Contact';
 ---
 
 <Layout>
+  <Navbar client:load />
   <main>
     <Hero client:load />
     <Education client:load />

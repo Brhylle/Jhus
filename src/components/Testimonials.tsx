@@ -1,5 +1,9 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ButterflyDecor from './ButterflyDecor';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
 
 interface Testimonial {
     name: string;
@@ -30,18 +34,32 @@ const testimonials: Testimonial[] = [
     }
 ];
 
+const slideVariants = {
+    enter: (direction: number) => ({
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0,
+    }),
+    center: {
+        zIndex: 1,
+        x: 0,
+        opacity: 1,
+    },
+    exit: (direction: number) => ({
+        zIndex: 0,
+        x: direction < 0 ? 1000 : -1000,
+        opacity: 0,
+    }),
+};
+
 export default function Testimonials() {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [[page, direction], setPage] = useState([0, 0]);
 
-    const nextTestimonial = () => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    const paginate = (newDirection: number) => {
+        const newPage = (page + newDirection + testimonials.length) % testimonials.length;
+        setPage([newPage, newDirection]);
     };
 
-    const prevTestimonial = () => {
-        setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    };
-
-    const current = testimonials[currentIndex];
+    const current = testimonials[page];
 
     return (
         <section id="testimonials" className="section-container bg-grey-900 text-pure-white">
@@ -51,70 +69,103 @@ export default function Testimonials() {
                     size="md"
                     animated={false}
                 />
-                <h2 className="section-title !text-pure-white">Testimonials</h2>
+                <motion.h2
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="section-title !text-pure-white"
+                >
+                    Testimonials
+                </motion.h2>
             </div>
 
             <div className="max-w-3xl mx-auto">
-                <div className="relative bg-grey-800 rounded-2xl p-8 md:p-12 border border-grey-700">
-                    {/* Quote icon */}
-                    <div className="absolute top-6 left-6 text-grey-600 opacity-50">
-                        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                        </svg>
-                    </div>
-
-                    {/* Testimonial content */}
-                    <div className="relative z-10 pt-8">
-                        <p className="text-lg md:text-xl text-grey-100 mb-8 leading-relaxed">
-                            "{current.content}"
-                        </p>
-
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-pure-white font-display font-bold text-lg">
-                                {current.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                            <div>
-                                <p className="font-display font-semibold text-pure-white">{current.name}</p>
-                                <p className="text-sm text-grey-400">{current.role} at {current.company}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Navigation */}
-                    <div className="flex items-center justify-between mt-8 pt-6 border-t border-grey-700">
-                        <button
-                            onClick={prevTestimonial}
-                            className="p-2 hover:bg-grey-700 rounded-full transition-colors"
-                            aria-label="Previous testimonial"
+                <Card className="bg-grey-800 border-grey-700 text-pure-white overflow-hidden">
+                    <CardContent className="p-8 md:p-12">
+                        {/* Quote icon */}
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            viewport={{ once: true }}
+                            className="mb-6 text-grey-600 opacity-50"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                             </svg>
-                        </button>
+                        </motion.div>
 
-                        <div className="flex gap-2">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentIndex(index)}
-                                    className={`w-2 h-2 rounded-full transition-all ${index === currentIndex ? 'bg-pure-white w-8' : 'bg-grey-600'
-                                        }`}
-                                    aria-label={`Go to testimonial ${index + 1}`}
-                                />
-                            ))}
+                        {/* Testimonial content with animation */}
+                        <div className="relative h-64 md:h-48">
+                            <AnimatePresence initial={false} custom={direction} mode="wait">
+                                <motion.div
+                                    key={page}
+                                    custom={direction}
+                                    variants={slideVariants}
+                                    initial="enter"
+                                    animate="center"
+                                    exit="exit"
+                                    transition={{
+                                        x: { type: 'spring', stiffness: 300, damping: 30 },
+                                        opacity: { duration: 0.2 },
+                                    }}
+                                    className="absolute w-full"
+                                >
+                                    <p className="text-lg md:text-xl text-grey-100 mb-8 leading-relaxed">
+                                        "{current.content}"
+                                    </p>
+
+                                    <div className="flex items-center gap-4">
+                                        <motion.div
+                                            whileHover={{ scale: 1.1 }}
+                                            className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-pure-white font-display font-bold text-lg"
+                                        >
+                                            {current.name.split(' ').map(n => n[0]).join('')}
+                                        </motion.div>
+                                        <div>
+                                            <p className="font-display font-semibold text-pure-white">{current.name}</p>
+                                            <p className="text-sm text-grey-400">{current.role} at {current.company}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
 
-                        <button
-                            onClick={nextTestimonial}
-                            className="p-2 hover:bg-grey-700 rounded-full transition-colors"
-                            aria-label="Next testimonial"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+                        {/* Navigation */}
+                        <div className="flex items-center justify-between mt-8 pt-6 border-t border-grey-700">
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => paginate(-1)}
+                                className="text-pure-white hover:bg-grey-700"
+                            >
+                                <ChevronLeft className="h-6 w-6" />
+                            </Button>
+
+                            <div className="flex gap-2">
+                                {testimonials.map((_, index) => (
+                                    <motion.button
+                                        key={index}
+                                        onClick={() => setPage([index, index > page ? 1 : -1])}
+                                        className={`h-2 rounded-full transition-all ${index === page ? 'bg-pure-white w-8' : 'bg-grey-600 w-2'
+                                            }`}
+                                        whileHover={{ scale: 1.2 }}
+                                        whileTap={{ scale: 0.9 }}
+                                    />
+                                ))}
+                            </div>
+
+                            <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={() => paginate(1)}
+                                className="text-pure-white hover:bg-grey-700"
+                            >
+                                <ChevronRight className="h-6 w-6" />
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
         </section>
     );

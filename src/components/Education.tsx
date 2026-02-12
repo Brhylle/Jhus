@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import ButterflyDecor from './ButterflyDecor';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 
 interface EducationItem {
     degree: string;
@@ -10,20 +12,35 @@ interface EducationItem {
 
 const educationData: EducationItem[] = [
     {
-        degree: 'Master of Science in Computer Science',
-        institution: 'University Name',
-        location: 'City, Country',
-        period: '2020 - 2022',
-        description: 'Specialized in Machine Learning and Distributed Systems. GPA: 3.9/4.0'
+        degree: 'Bachelor of Science in Accountancy',
+        institution: 'Pamantasan ng Lungsod ng Pasig',
+        location: 'Pasig City, Philippines',
+        period: '2023 - Present',
+        description: 'Relevant Coursework: '
     },
-    {
-        degree: 'Bachelor of Science in Software Engineering',
-        institution: 'University Name',
-        location: 'City, Country',
-        period: '2016 - 2020',
-        description: 'Graduated with Honors. Focus on Web Development and Database Systems.'
-    }
 ];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.6,
+            ease: 'easeOut',
+        },
+    },
+};
 
 export default function Education() {
     return (
@@ -34,37 +51,58 @@ export default function Education() {
                     size="md"
                     animated={false}
                 />
-                <h2 className="section-title">Education</h2>
+                <motion.h2
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="section-title"
+                >
+                    Education
+                </motion.h2>
             </div>
 
-            <div className="space-y-8">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                className="space-y-8"
+            >
                 {educationData.map((item, index) => (
-                    <div
-                        key={index}
-                        className="card group animate-slide-up"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                        <div className="flex items-start gap-4">
-                            <div className="flex-shrink-0 w-12 h-12 bg-grey-900 rounded-full flex items-center justify-center text-pure-white font-display font-bold">
-                                {item.period.split(' - ')[0].slice(-2)}
-                            </div>
+                    <motion.div key={index} variants={cardVariants}>
+                        <Card className="group">
+                            <CardHeader>
+                                <div className="flex items-start gap-4">
+                                    <motion.div
+                                        whileHover={{ scale: 1.1, rotate: 5 }}
+                                        className="flex-shrink-0 w-12 h-12 bg-grey-900 rounded-full flex items-center justify-center text-pure-white font-display font-bold"
+                                    >
+                                        {item.period.split(' - ')[0].slice(-2)}
+                                    </motion.div>
 
-                            <div className="flex-grow">
-                                <h3 className="text-2xl font-display font-semibold text-pure-black mb-2 group-hover:text-grey-700 transition-colors">
-                                    {item.degree}
-                                </h3>
-                                <p className="text-lg text-grey-700 mb-1">{item.institution}</p>
-                                <p className="text-sm text-grey-500 mb-3">
-                                    {item.location} • {item.period}
-                                </p>
-                                {item.description && (
+                                    <div className="flex-grow">
+                                        <CardTitle className="group-hover:text-grey-700 transition-colors">
+                                            {item.degree}
+                                        </CardTitle>
+                                        <CardDescription className="text-lg text-grey-700 mt-2">
+                                            {item.institution}
+                                        </CardDescription>
+                                        <p className="text-sm text-grey-500 mt-1">
+                                            {item.location} • {item.period}
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardHeader>
+                            {item.description && (
+                                <CardContent>
                                     <p className="text-grey-600">{item.description}</p>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                                </CardContent>
+                            )}
+                        </Card>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }

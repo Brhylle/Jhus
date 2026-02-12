@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import ButterflyDecor from './ButterflyDecor';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 interface LeadershipItem {
     title: string;
@@ -32,6 +34,28 @@ const leadershipData: LeadershipItem[] = [
     }
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            duration: 0.5,
+            ease: 'easeOut',
+        },
+    },
+};
+
 export default function Leadership() {
     return (
         <section id="leadership" className="section-container bg-pure-white">
@@ -41,36 +65,50 @@ export default function Leadership() {
                     size="md"
                     animated={false}
                 />
-                <h2 className="section-title">Leadership Experience</h2>
+                <motion.h2
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="section-title"
+                >
+                    Leadership Experience
+                </motion.h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                className="grid md:grid-cols-2 gap-6"
+            >
                 {leadershipData.map((item, index) => (
-                    <div
-                        key={index}
-                        className="card animate-slide-up"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                        <div className="mb-4">
-                            <h3 className="text-xl font-display font-semibold text-pure-black mb-1">
-                                {item.title}
-                            </h3>
-                            <p className="text-grey-700 font-medium">{item.organization}</p>
-                            <p className="text-sm text-grey-500 mt-1">{item.period}</p>
-                        </div>
+                    <motion.div key={index} variants={cardVariants} whileHover={{ y: -5 }}>
+                        <Card className="h-full flex flex-col">
+                            <CardHeader>
+                                <CardTitle className="text-xl">{item.title}</CardTitle>
+                                <CardDescription className="text-grey-700 font-medium">
+                                    {item.organization}
+                                </CardDescription>
+                                <p className="text-sm text-grey-500 mt-1">{item.period}</p>
+                            </CardHeader>
 
-                        <p className="text-grey-600 mb-3">{item.description}</p>
+                            <CardContent className="flex-grow">
+                                <p className="text-grey-600">{item.description}</p>
+                            </CardContent>
 
-                        {item.impact && (
-                            <div className="pt-3 border-t border-grey-200">
-                                <p className="text-sm text-grey-700">
-                                    <span className="font-semibold">Impact:</span> {item.impact}
-                                </p>
-                            </div>
-                        )}
-                    </div>
+                            {item.impact && (
+                                <CardFooter className="pt-3 border-t border-grey-200">
+                                    <p className="text-sm text-grey-700">
+                                        <span className="font-semibold">Impact:</span> {item.impact}
+                                    </p>
+                                </CardFooter>
+                            )}
+                        </Card>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
 }
