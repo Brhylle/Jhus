@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import ButterflyDecor from './ButterflyDecor';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 
@@ -64,11 +63,6 @@ export default function Testimonials() {
     return (
         <section id="testimonials" className="section-container bg-grey-900 text-pure-white">
             <div className="relative">
-                <ButterflyDecor
-                    className="absolute -top-8 -right-4 text-grey-700 opacity-30"
-                    size="md"
-                    animated={false}
-                />
                 <motion.h2
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}

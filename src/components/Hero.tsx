@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
-import ButterflyDecor from './ButterflyDecor';
 import { Button } from './ui/button';
 
 const containerVariants = {
@@ -25,18 +24,6 @@ const itemVariants = {
     },
 };
 
-const butterflyVariants = {
-    float: {
-        y: [-10, 10, -10],
-        x: [-5, 5, -5],
-        transition: {
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-        },
-    },
-};
-
 export default function Hero() {
     const scrollToNext = () => {
         const nextSection = document.querySelector('#education');
@@ -47,40 +34,6 @@ export default function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-grey-50 to-pure-white pt-20">
-            {/* Floating butterflies decoration */}
-            <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    variants={butterflyVariants}
-                    animate="float"
-                    className="absolute top-20 left-[10%]"
-                >
-                    <ButterflyDecor className="text-grey-400 opacity-30" size="lg" animated={false} />
-                </motion.div>
-                <motion.div
-                    variants={butterflyVariants}
-                    animate="float"
-                    transition={{ delay: 1 }}
-                    className="absolute top-40 right-[15%]"
-                >
-                    <ButterflyDecor className="text-grey-300 opacity-20" size="md" animated={false} />
-                </motion.div>
-                <motion.div
-                    variants={butterflyVariants}
-                    animate="float"
-                    transition={{ delay: 2 }}
-                    className="absolute bottom-32 left-[20%]"
-                >
-                    <ButterflyDecor className="text-grey-400 opacity-25" size="sm" animated={false} />
-                </motion.div>
-                <motion.div
-                    variants={butterflyVariants}
-                    animate="float"
-                    transition={{ delay: 0.5 }}
-                    className="absolute top-1/2 right-[25%]"
-                >
-                    <ButterflyDecor className="text-grey-300 opacity-15" size="md" animated={false} />
-                </motion.div>
-            </div>
 
             {/* Main content */}
             <motion.div
@@ -89,10 +42,6 @@ export default function Hero() {
                 animate="visible"
                 className="relative z-10 text-center px-6 max-w-4xl mx-auto"
             >
-                <motion.div variants={itemVariants} className="mb-8 flex justify-center">
-                    <ButterflyDecor size="lg" className="text-grey-800" animated={false} />
-                </motion.div>
-
                 <motion.h1
                     variants={itemVariants}
                     className="text-6xl md:text-7xl lg:text-8xl font-display font-bold mb-6 text-gradient"

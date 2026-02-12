@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
-import ButterflyDecor from './ButterflyDecor';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 const contactMethods = [
@@ -55,11 +54,6 @@ export default function Contact() {
     return (
         <section id="contact" className="section-container bg-pure-white">
             <div className="relative">
-                <ButterflyDecor
-                    className="absolute -top-8 -left-4 text-grey-200 opacity-50"
-                    size="md"
-                    animated={false}
-                />
                 <motion.h2
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -127,9 +121,6 @@ export default function Contact() {
                     transition={{ delay: 0.5 }}
                     className="text-center pt-8 border-t border-grey-200"
                 >
-                    <div className="mb-4">
-                        <ButterflyDecor size="sm" className="inline-block text-grey-400" animated={false} />
-                    </div>
                     <p className="text-grey-500 text-sm">
                         © {new Date().getFullYear()} Your Name. All rights reserved.
                     </p>

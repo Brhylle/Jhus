@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
-import ButterflyDecor from './ButterflyDecor';
 
 const navItems = [
     { name: 'Home', href: '#' },
@@ -56,7 +55,6 @@ export default function Navbar() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <ButterflyDecor size="sm" className="text-grey-900" animated={false} />
                         <span className="font-display font-bold text-xl text-grey-900 group-hover:text-grey-700 transition-colors">
                             J.C. Dela Cruz
                         </span>
