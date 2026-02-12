@@ -94,7 +94,7 @@ export default function Navbar() {
                                         asChild
                                         className="ml-2 bg-grey-800 hover:bg-grey-900"
                                     >
-                                        <a href="/resume.pdf" download>
+                                        <a href="https://docs.google.com/document/d/1Uhw-9Ar5TIwWmo9_NweqXcQptueHQCJRr6vNZF0eHDY/export?format=pdf" download>
                                             Download Resume
                                         </a>
                                     </Button>
