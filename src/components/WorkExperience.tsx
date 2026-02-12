@@ -36,8 +36,7 @@ const workData: WorkItem[] = [
         location: 'Pasig, Philippines',
         period: '2024',
         achievements: [
-            'Conducted house-to-house surveys to collect demographic and community data, ensuring accuracy and completeness during field interviews.',
-            'Assisted in organizing and validating collected responses for submission to the LGU, supporting data-driven community planning initiatives.',
+            'Assisted the accounting clerk in routine accounting operations & other basic accounting tasks, ensuring compliance and coordination with other departments.',
         ]
     },
     {
@@ -46,8 +45,7 @@ const workData: WorkItem[] = [
         location: 'Pasig, Philippines',
         period: 'July 2025',
         achievements: [
-            'Conducted initial analysis of financial statements and supporting documents to assist in business permit evaluation for 50+ applicants.',
-            'Conducted basic tax compliance assessments for SME applicants, identifying deficiencies, coordinating clarifications, and supporting timely permit processing.',
+            'Conducted initial analysis of financial statements and supporting documents to assist in business permit evaluation for 20+ applicants.',
         ]
     },
     {
