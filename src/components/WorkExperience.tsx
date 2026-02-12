@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import ButterflyDecor from './ButterflyDecor';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface WorkItem {
@@ -74,11 +73,6 @@ export default function WorkExperience() {
     return (
         <section id="work" className="section-container bg-grey-50">
             <div className="relative">
-                <ButterflyDecor
-                    className="absolute -top-8 -left-4 text-grey-200 opacity-50"
-                    size="md"
-                    animated={false}
-                />
                 <motion.h2
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
