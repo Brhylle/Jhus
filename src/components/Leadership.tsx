@@ -11,26 +11,13 @@ interface LeadershipItem {
 
 const leadershipData: LeadershipItem[] = [
     {
-        title: 'President',
-        organization: 'Computer Science Student Association',
-        period: '2021 - 2022',
-        description: 'Led organization of 200+ members, organized tech talks and hackathons',
-        impact: 'Increased membership by 40% and secured $10K in sponsorships'
+        title: 'Community Leader',
+        organization: 'The Metamorphs',
+        period: 'December 2024 - Present',
+        description: 'Lead and mentor a community of 40+ members, delivering weekly lessons on trading fundamentals, risk management, market analysis, and trading psychology.',
+        impact: 'Designed structured learning sessions that clarify complex topics, such as position sizing and leverage, while helping members develop disciplined trading practices, building practical skills, confidence in decision-making, and consistently gaining actionable insights.'
     },
-    {
-        title: 'Team Lead',
-        organization: 'University Hackathon Committee',
-        period: '2020 - 2021',
-        description: 'Coordinated annual hackathon with 500+ participants from 20+ universities',
-        impact: 'Successfully managed budget of $25K and 15 volunteers'
-    },
-    {
-        title: 'Volunteer Instructor',
-        organization: 'Code for Community',
-        period: '2019 - 2020',
-        description: 'Taught programming basics to underprivileged high school students',
-        impact: 'Mentored 30+ students, 80% continued to pursue tech education'
-    }
+    // add leadershipData here...
 ];
 
 const containerVariants = {
