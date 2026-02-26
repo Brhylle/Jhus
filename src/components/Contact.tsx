@@ -11,14 +11,14 @@ const contactMethods = [
     },
     {
         name: 'LinkedIn',
-        href: 'https://linkedin.com/in/yourprofile',
-        value: 'linkedin.com/in/yourprofile',
+        href: 'https://www.linkedin.com/in/dela-cruz-jhustiene-casey-b13791311/',
+        value: 'linkedin.com/in/dela-cruz-jhustiene-casey-b13791311',
         icon: Linkedin,
     },
     {
         name: 'GitHub',
-        href: 'https://github.com/yourusername',
-        value: 'github.com/yourusername',
+        href: 'https://github.com/Brhylle',
+        value: 'github.com/Brhylle',
         icon: Github,
     },
     {
