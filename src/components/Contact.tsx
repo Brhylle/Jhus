@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
+import { Mail, Linkedin, Github, Twitter, Youtube } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 const contactMethods = [
     {
         name: 'Email',
-        href: 'mailto:your.email@example.com',
-        value: 'your.email@example.com',
+        href: 'mailto:jhustienecaseyemperador@gmail.com',
+        value: 'jhustienecaseyemperador@gmail.com',
         icon: Mail,
     },
     {
@@ -22,10 +22,10 @@ const contactMethods = [
         icon: Github,
     },
     {
-        name: 'Twitter',
-        href: 'https://twitter.com/yourusername',
-        value: '@yourusername',
-        icon: Twitter,
+        name: 'YouTube',
+        href: 'https://www.youtube.com/@Natsukashii023',
+        value: '@Natsukashii023',
+        icon: Youtube,
     },
 ];
 
@@ -122,7 +122,7 @@ export default function Contact() {
                     className="text-center pt-8 border-t border-grey-200"
                 >
                     <p className="text-grey-500 text-sm">
-                        © {new Date().getFullYear()} Your Name. All rights reserved.
+                        © {new Date().getFullYear()} Jhustiene Casey Dela Cruz. All rights reserved.
                     </p>
                 </motion.div>
             </div>
