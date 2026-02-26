@@ -84,29 +84,28 @@ export default function Hero() {
                         </a>
                     </Button>
                 </motion.div>
-
-                {/* Scroll indicator */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, y: [0, 10, 0] }}
-                    transition={{
-                        opacity: { delay: 1.5 },
-                        y: { repeat: Infinity, duration: 2 },
-                    }}
-                    className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+            </motion.div>
+            {/* Scroll indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, y: [0, 10, 0] }}
+                transition={{
+                    opacity: { delay: 1.5 },
+                    y: { repeat: Infinity, duration: 2 },
+                }}
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            >
+                <svg
+                    className="w-6 h-6 text-grey-400"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                 >
-                    <svg
-                        className="w-6 h-6 text-grey-400"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                    </svg>
-                </motion.div>
+                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
             </motion.div>
         </section>
     );
